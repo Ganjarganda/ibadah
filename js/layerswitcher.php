@@ -39,12 +39,12 @@
 
           <?php
 
-          include('config/config.php');
+          include('config/config.php');//koneksi ke database
 
           $sql = "SELECT DISTINCT `kecamatan` FROM `tempat_ibadah`"; //tampilan nama2 kecamatan
           $hasil = $conn->query($sql);
-          if($hasil->num_rows > 0){
-            while($row = $hasil->fetch_assoc()){
+          if($hasil->num_rows > 0){ //jika hasilnya lebih dari 0
+            while($row = $hasil->fetch_assoc()){ //tampilkan datanya menggunakan variabel row
               ?>
               //Checklist
               new ol.layer.Vector({
@@ -52,7 +52,7 @@
                 visible: false, //tidak terCheck
                 source: new ol.source.Vector({
                   format: new ol.format.GeoJSON(),
-                  url: 'togeojson/tenayanraya.php'
+                  url: 'togeojson/semua.php?kecamatan=<?php echo $row['kecamatan'] ?>'
                 }),
                 style:new ol.style.Style({
                   image: new ol.style.Icon(({
@@ -74,7 +74,7 @@
             visible: true, //Awal Check
             source: new ol.source.Vector({
               format: new ol.format.GeoJSON(),
-              url: 'togeojson/semua.php'
+              url: 'togeojson/semua.php?kecamatan=semua'
             }),
             style:new ol.style.Style({
               image: new ol.style.Icon(({
