@@ -52,7 +52,7 @@
                 visible: false, //tidak terCheck
                 source: new ol.source.Vector({
                   format: new ol.format.GeoJSON(),
-                  url: 'togeojson/semua.php?kecamatan=<?php echo $row['kecamatan'] ?>'
+                  url: 'togeojson/kecamatan.php?kecamatan=<?php echo $row['kecamatan'] ?>'
                 }),
                 style:new ol.style.Style({
                   image: new ol.style.Icon(({
@@ -74,7 +74,7 @@
             visible: true, //Awal Check
             source: new ol.source.Vector({
               format: new ol.format.GeoJSON(),
-              url: 'togeojson/semua.php?kecamatan=semua'
+              url: 'togeojson/kecamatan.php?kecamatan=semua'
             }),
             style:new ol.style.Style({
               image: new ol.style.Icon(({
