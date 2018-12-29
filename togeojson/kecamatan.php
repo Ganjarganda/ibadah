@@ -24,15 +24,15 @@ if (isset($_GET['kecamatan'])) {
     );
     while ($row = mysqli_fetch_row($rs)) {
       $properties = $row;
-      unset($properties[$row[5]]);
-      unset($properties[$row[6]]);
+      unset($properties[$row[5]]); //x
+      unset($properties[$row[6]]); //y
       $feature = array(
         'type'	=> 'Feature',
         'geometry' => array(
           'type' => 'Point',
           'coordinates' => array(
-            (float)$row[6],
-            (float)$row[5]
+            (float)$row[6], //y
+            (float)$row[5] //x
           )
         ),
         //'properties' => $properties
@@ -42,8 +42,8 @@ if (isset($_GET['kecamatan'])) {
           'alamat' => $row[2],
           'kecamatan' => $row[3],
           'kelurahan' => $row[4],
-          'x' => (float)$row[5],
-          'y' => (float)$row[6]
+          'x' => (float)$row[5], //x
+          'y' => (float)$row[6] //y
         )
       );
       array_push($geojson['features'], $feature);
@@ -65,15 +65,15 @@ if (isset($_GET['kecamatan'])) {
     );
     while ($row = mysqli_fetch_row($rs)) {
       $properties = $row;
-      unset($properties[$row[5]]);
-      unset($properties[$row[6]]);
+      unset($properties[$row[5]]); //x
+      unset($properties[$row[6]]); //y
       $feature = array(
         'type'	=> 'Feature',
         'geometry' => array(
           'type' => 'Point',
           'coordinates' => array(
-            (float)$row[6],
-            (float)$row[5]
+            (float)$row[6], //y
+            (float)$row[5] //x
           )
         ),
         //'properties' => $properties
@@ -83,8 +83,8 @@ if (isset($_GET['kecamatan'])) {
           'alamat' => $row[2],
           'kecamatan' => $row[3],
           'kelurahan' => $row[4],
-          'x' => (float)$row[5],
-          'y' => (float)$row[6]
+          'x' => (float)$row[5], //x
+          'y' => (float)$row[6] //y
         )
       );
       array_push($geojson['features'], $feature);

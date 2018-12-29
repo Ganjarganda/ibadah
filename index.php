@@ -43,11 +43,11 @@
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/4.0.1/ol.js"></script>
+    <script type="text/javascript" src="https://openlayers.org/en/latest/build/ol.js"></script>
 
     <!-- Layer Switcher / Filter / Checklist -->
     <?php include('js/ol3-layerswitcher.php'); ?>
-    <?php include('js/layerswitcher.php'); ?>
+    <?php include('js/fungsiweb.php'); ?>
 
 
   </body>
