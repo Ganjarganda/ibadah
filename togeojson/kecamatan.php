@@ -40,8 +40,8 @@ if (isset($_GET['kecamatan'])) {
           'no' => $row[0],
           'nama_mesjid' => $row[1],
           'alamat' => $row[2],
-          'kecamatan' => $row[3],
-          'kelurahan' => $row[4],
+          'kelurahan' => $row[3],
+          'kecamatan' => $row[4],
           'x' => (float)$row[5], //x
           'y' => (float)$row[6] //y
         )
@@ -81,8 +81,8 @@ if (isset($_GET['kecamatan'])) {
           'no' => $row[0],
           'nama_mesjid' => $row[1],
           'alamat' => $row[2],
-          'kecamatan' => $row[3],
-          'kelurahan' => $row[4],
+          'kelurahan' => $row[3],
+          'kecamatan' => $row[4],
           'x' => (float)$row[5], //x
           'y' => (float)$row[6] //y
         )

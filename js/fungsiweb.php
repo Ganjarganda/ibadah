@@ -1,5 +1,24 @@
 <script type="text/javascript">
-//(function() {
+
+//Checklist "Semua"
+var semua = new ol.layer.Vector({
+  title: 'Semua',
+  visible: true, //Awal Check
+  source: new ol.source.Vector({
+    format: new ol.format.GeoJSON(),
+    url: 'togeojson/kecamatan.php?kecamatan=semua'
+  }),
+  style:new ol.style.Style({
+    image: new ol.style.Icon(({
+      anchor: [0.5, 46],
+      anchorXUnits: 'fraction',
+      anchorYUnits: 'pixels',
+      src: 'images/star.png'
+    }))
+  })
+});
+//-----------------------------------------------------------------------------
+//Map
 var map = new ol.Map({
   target: 'map',
   layers: [
@@ -46,7 +65,7 @@ var map = new ol.Map({
         if($hasil->num_rows > 0){ //jika hasilnya lebih dari 0
           while($row = $hasil->fetch_assoc()){ //tampilkan datanya menggunakan variabel row
             ?>
-            //Checklist
+            //Checklist selain "semua"
             new ol.layer.Vector({
               title:  ' <?php echo $row['kecamatan'] ?> ',
               visible: false, //tidak terCheck
@@ -69,22 +88,7 @@ var map = new ol.Map({
 
         ?>
         //Checklist jika semua kecamatan
-        new ol.layer.Vector({
-          title: 'Semua',
-          visible: true, //Awal Check
-          source: new ol.source.Vector({
-            format: new ol.format.GeoJSON(),
-            url: 'togeojson/kecamatan.php?kecamatan=semua'
-          }),
-          style:new ol.style.Style({
-            image: new ol.style.Icon(({
-              anchor: [0.5, 46],
-              anchorXUnits: 'fraction',
-              anchorYUnits: 'pixels',
-              src: 'images/star.png'
-            }))
-          })
-        })
+        semua //panggil variabel "semua" di line paling atas
       ]
     })
   ],
@@ -94,28 +98,64 @@ var map = new ol.Map({
   })
 });
 
+//LayerSwitcher-----------------------------------------------------------------
 var layerSwitcher = new ol.control.LayerSwitcher({
   tipLabel: 'Legenda' // Optional label for button
 });
 map.addControl(layerSwitcher);
-//})();
 
-//bagian searching lokasi tmpt ibadah
-//control select
-var select = new ol.control.SearchFeature({
-  source: new ol.source.Vector({
-    format: new ol.format.GeoJSON(),
-    url:  'togeojson/kecamatan.php?kecamatan=semua'
-  }),
-  property: $(".options select").val()
-});
-map.addControl(search);
+//FullScreen--------------------------------------------------------------------
+var fullscreen = new ol.control.FullScreen();
+map.addControl(fullscreen);
 
-search.on('select', function(e){
-  select.getFeatures().clear();
-  select.getFeatures().push(e.search);
-  var p = e.search.getGeometry().getFirstCoordinate();
-  map.getView().animate({center:p});
+//Pop Up------------------------------------------------------------------------
+var container = document.getElementById('popup'),
+content_element = document.getElementById('popup-content'),
+closer = document.getElementById('popup-closer');
+
+closer.onclick = function() {
+  overlay.setPosition(undefined);
+  closer.blur();
+  return false;
+}
+
+var overlay = new ol.Overlay({
+  element: container,
+  autoPan: true,
+  effset: [0, -10]
 });
+map.addOverlay(overlay);
+
+map.on('click', function(evt) {
+  var feature = map.forEachFeatureAtPixel(evt.pixel,
+    function(feature, layer) {
+      return feature;
+    });
+    if (feature) {
+      var geometry = feature.getGeometry();
+      var coord = geometry.getCoordinates();
+
+      var content = '<h5>' + feature.get('nama_mesjid') + '</h5>';
+      content += '<h6>' + feature.get('alamat') +', ' + feature.get('kelurahan') + ''
+      ', ' + feature.get('kecamatan') + ', Riau, Indonesia</h6>';
+
+      content_element.innerHTML = content;
+      overlay.setPosition(coord);
+
+      console.info(feature.getProperties());
+
+    }
+  });
+
+  map.on('pointermove', function(e) {
+    if (e.dragging) {
+      return;
+    }
+    var pixel = map.getEventPixel(e.originalEvent);
+    var hit = map.hasFeatureAtPixel(pixel);
+
+    map.getTarget().style.cursor = hit ? 'pointer' : '';
+
+  });
 
 </script>
