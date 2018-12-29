@@ -5,9 +5,15 @@
   <meta charset="utf-8" />
   <title>GIS:IBADAH</title>
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ol3/4.0.1/ol.css" />
+  <!-- OpenLayers primary-->
+  <link rel="stylesheet" href="https://openlayers.org/en/latest/css/ol.css" />
+  <script type="text/javascript" src="https://openlayers.org/en/latest/build/ol.js"></script>
+   <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+
+  <!-- OpenLayers Features -->
+  <!-- OpenLayers LayerSwitcher -->
   <link rel="stylesheet" href="css/ol3-layerswitcher.css" />
-  <link rel="stylesheet" href="css/layerswitcher.css" />
+  <link rel="stylesheet" href="css/fungsiweb.css" />
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -31,24 +37,26 @@
 
       <div id="map"></div>
 
+      <div id="popup" class="ol-popup">
+        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+        <div id="popup-content"></div>
+      </div>
+
     </div>
     <!-- /.row -->
 
     <hr>
 
+    <!-- Footer -->
     <?php include('include/footer.php'); ?>
 
+    <!-- Features -->
+    <?php include('js/ol3-layerswitcher.php'); ?>
+    <?php include('js/fungsiweb.php'); ?>
 
     <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
-    <script type="text/javascript" src="https://openlayers.org/en/latest/build/ol.js"></script>
-
-    <!-- Layer Switcher / Filter / Checklist -->
-    <?php include('js/ol3-layerswitcher.php'); ?>
-    <?php include('js/fungsiweb.php'); ?>
-
 
   </body>
   </html>
