@@ -3,12 +3,12 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>GIS:IBADAH</title>
+  <title>Beranda - GIS:IBADAH</title>
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
   <!-- OpenLayers primary-->
   <link rel="stylesheet" href="https://openlayers.org/en/latest/css/ol.css" />
   <script type="text/javascript" src="https://openlayers.org/en/latest/build/ol.js"></script>
-   <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
 
   <!-- OpenLayers Features -->
   <!-- OpenLayers LayerSwitcher -->
