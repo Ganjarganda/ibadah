@@ -10,6 +10,7 @@
   <script type="text/javascript" src="https://openlayers.org/en/latest/build/ol.js"></script>
   <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
 
+
   <!-- OpenLayers Features -->
   <!-- OpenLayers LayerSwitcher -->
   <link rel="stylesheet" href="css/ol3-layerswitcher.css" />
@@ -30,12 +31,19 @@
   <!-- Page Content -->
   <div class="container">
 
+    <!-- Tambah Data -->
     <header class="jumbotron my-4">
       <h1 class="display-3">Data Tempat Ibadah</h1>
       <p class="lead">Daftar Tempat Ibadah yang Telah Disimpan dalam Database.</p>
-      <a href="#" class="btn btn-primary btn-lg">Tambah data</a>
+      <a href="tambahdata.php" class="btn btn-primary btn-lg">Tambah data</a>
     </header>
 
+    <!-- Search Bar -->
+    <div class="active-purple-3 active-purple-4 mb-4">
+      <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+    </div>
+
+    <!-- Data -->
     <div class="row text-center">
       <!-- ambil data  -->
       <?php

@@ -47,8 +47,6 @@
     </div>
     <!-- /.row -->
 
-    <hr>
-
     <!-- Footer -->
     <?php include('include/footer.php'); ?>
 

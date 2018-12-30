@@ -1,4 +1,5 @@
 <!-- Call to Action Section -->
+<hr>
 <div class="row mb-4">
   <div class="col-md-8">
     <p>Website Ini Merupakan Sistem Informasi Geografis Tempat Ibadah Berbagai Agama.</p>

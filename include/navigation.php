@@ -9,9 +9,6 @@
         <li class="nav-item">
           <a class="nav-link" href="data.php">Data</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="login.php">Masuk</a>
-        </li>
       </ul>
     </div>
   </div>
