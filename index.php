@@ -30,7 +30,9 @@
   <!-- Page Content -->
   <div class="container-fluid">
 
-    <h1 class="my-1">Tempat Ibadah</h1>
+    <header class="my-4">
+      <h1 class="display-4 text-center">Peta Tempat Ibadah</h1>
+    </header>
 
     <!-- Map -->
     <div class="row">

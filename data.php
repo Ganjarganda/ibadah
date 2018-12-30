@@ -57,7 +57,9 @@
                 <p class="card-text"><?php echo "$row[alamat], $row[kelurahan], $row[kecamatan]"; ?></p>
               </div>
               <div class="card-footer">
-                <a href="#" class="btn btn-primary">Find Out More!</a>
+                <a href="#" class="btn btn-info">Lihat</a>
+                <a href="#" class="btn btn-warning">Ubah</a>
+                <a href="#" class="btn btn-danger">Hapus</a>
               </div>
             </div>
           </div>
