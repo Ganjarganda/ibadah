@@ -66,7 +66,7 @@
               </div>
               <div class="card-footer">
                 <a href="#" class="btn btn-info">Lihat</a>
-                <a href="#" class="btn btn-warning">Ubah</a>
+                <a href="updatedata.php?no=<?php echo "$row[no]"; ?>" class="btn btn-warning">Ubah</a>
                 <a href="#" class="btn btn-danger">Hapus</a>
               </div>
             </div>

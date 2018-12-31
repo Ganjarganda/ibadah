@@ -9,7 +9,7 @@ $targetFilePath = $targetDir . $gambar;
 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);//ambil tipe gambar dari gambar yang diupload
 
 if (isset($_POST["submit"])) {
-
+  $no = $_POST['no'];
   $nama_mesjid = $_POST['nama_mesjid'];
   $alamat = $_POST['alamat'];
   $kelurahan = $_POST['kelurahan'];
@@ -22,12 +22,13 @@ if (isset($_POST["submit"])) {
   if (in_array($fileType, $allowTypes)) {
     if (move_uploaded_file($_FILES["gambar"]["tmp_name"], $targetFilePath)) { //max 2MB foto yang di upload
       //insert Data into database
-      $insert = $conn->query("INSERT INTO `tempat_ibadah`(`nama_mesjid`, `alamat`, `kelurahan`, `kecamatan`, `x`, `y`, `gambar`)
-      VALUES ('".$nama_mesjid."', '".$alamat."', '".$kelurahan."', '".$kecamatan."', $x, $y ,'".$gambar."')");
+      $insert = $conn->query("UPDATE `tempat_ibadah` SET `nama_mesjid`='$nama_mesjid', `alamat`='$alamat'
+      , `kelurahan`='$kelurahan', `kecamatan`='$kecamatan', `x`=$x, `y`=$y, `gambar`='$gambar'
+      WHERE `no`=$no");
       if ($insert) {
-        $popup = "Data Berhasil Disimpan";
+        $popup = "Data Berhasil Diperharui";
       } else {
-        $popup = "Data Gagal Disimpan";
+        $popup = "Data Gagal Diperharui";
       }
       $conn->close();
     } else {
