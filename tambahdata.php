@@ -81,7 +81,7 @@
           <div class="custom-file">
             <input type="file" class="custom-file-input" name="gambar" required>
             <label class="custom-file-label" for="customFile">Choose file</label>
-            <small class="form-text text-muted">*Ukuran gambar maks. 2mb</small>
+            <small class="form-text text-muted">*Ukuran gambar maks. 2mb. jika lebih dari 2mb, kunjungi <a href="https://compressjpeg.com/">compressjpeg.com</a></small>
           </div>
         </div>
       </div>
