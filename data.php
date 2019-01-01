@@ -49,16 +49,17 @@
       <?php
       include('config/config.php');
 
-      $sql = "SELECT no, nama_mesjid, alamat, kelurahan, kecamatan, x, y FROM tempat_ibadah";
+      $sql = "SELECT no, nama_mesjid, alamat, kelurahan, kecamatan, x, y, gambar FROM tempat_ibadah";
       $result = $conn->query($sql);
       if ($result->num_rows > 0) {
         //output
         while($row = $result->fetch_assoc()) {
+          $imageURL = 'images/uploads/'.$row["gambar"]; //initial untuk gambar
           ?>
 
           <div class="col-lg-3 col-md-6 mb-4">
             <div class="card">
-              <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+              <img class="card-img-top" src="<?php echo $imageURL; ?>" height="150" width="500" alt=""><!-- 500x325 -->
               <div class="card-body">
                 <h5 class="card-title"><?php echo "$row[nama_mesjid]"; ?></h5>
                 <h6 class="card-subtitle mb-2 text-muted"><?php echo "$row[x], $row[y]"; ?></h6>
