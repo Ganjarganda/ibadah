@@ -49,7 +49,7 @@
       <?php
       include('config/config.php');
 
-      $sql = "SELECT no, nama_mesjid, alamat, kelurahan, kecamatan, x, y, gambar FROM tempat_ibadah";
+      $sql = "SELECT * FROM tempat_ibadah";
       $result = $conn->query($sql);
       if ($result->num_rows > 0) {
         //output
@@ -61,19 +61,19 @@
           $kecamatan    = $row["kecamatan"];
           $koor_x       = $row["x"];
           $koor_y       = $row["y"];
-          $imageURL     = 'images/uploads/'.$row["gambar"]; //initial untuk gambar
+          $imageURL     = 'images/uploads/'.$row["gambar"];
           ?>
 
           <div class="col-lg-3 col-md-6 mb-4">
             <div class="card">
-              <img class="card-img-top" src="<?php echo $imageURL; ?>" height="150" width="500" alt=""><!-- 500x325 -->
+              <img class="card-img-top" src="<?php echo $imageURL; ?>" height="150" width="500" alt=""><!-- 500x325 default dari template -->
               <div class="card-body">
                 <h5 class="card-title"><?php echo $nama_mesjid; ?></h5>
                 <h6 class="card-subtitle mb-2 text-muted"><?php echo $koor_x . ", " . $koor_y; ?></h6>
                 <p class="card-text"><?php echo $alamat . ", " . $kelurahan . ", " . $kecamatan; ?></p>
               </div>
               <div class="card-footer">
-                <a href="#" class="btn btn-info">Lihat</a>
+                <a href="lihatdata.php?no=<?php echo $primarykey; ?>" class="btn btn-info">Lihat</a>
                 <a href="updatedata.php?no=<?php echo $primarykey; ?>" class="btn btn-warning">Ubah</a>
                 <a href="aksi/hapus_aksi.php?no=<?php echo $primarykey ?>" class="btn btn-danger">Hapus</a>
               </div>
