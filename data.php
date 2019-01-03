@@ -39,9 +39,10 @@
     </header>
 
     <!-- Search Bar -->
+    <!--
     <div class="active-purple-3 active-purple-4 mb-4">
       <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-    </div>
+    </div> -->
 
     <!-- Data -->
     <div class="row text-center">

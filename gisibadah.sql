@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2019 at 07:46 AM
+-- Generation Time: Jan 03, 2019 at 01:34 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -21,6 +21,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `gisibadah`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `galeri`
+--
+
+CREATE TABLE `galeri` (
+  `id_galeri` int(11) NOT NULL,
+  `id_tempatibadah` int(11) NOT NULL,
+  `gambar_galeri` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `galeri`
+--
+
+INSERT INTO `galeri` (`id_galeri`, `id_tempatibadah`, `gambar_galeri`) VALUES
+(5, 10, 'download.jpg'),
+(6, 1, 'Mesjid Ar-rahman-min.jpg'),
+(7, 1, 'TELPON_KUNO_17253___TELPON_ANTIK___TELEPHONE_JADUL___TELEPHO.jpg'),
+(8, 1, 'thumb-1920-528418.jpg'),
+(9, 3, '258403.jpg'),
+(10, 7, 'Backgrounds-gaming-full-hd-images.jpg');
 
 -- --------------------------------------------------------
 
@@ -44,8 +68,8 @@ CREATE TABLE `tempat_ibadah` (
 --
 
 INSERT INTO `tempat_ibadah` (`no`, `nama_mesjid`, `alamat`, `kelurahan`, `kecamatan`, `x`, `y`, `gambar`) VALUES
-(1, 'Mesjid AR-RAHMAN', 'Jl. Bukit Rahayu', 'Tangkerang Timur', 'Tenayan Raya', 0.483368441, 101.5003935, 'TELPON_KUNO_17253___TELPON_ANTIK___TELEPHONE_JADUL___TELEPHO.jpg'),
-(2, 'Mesjid AL-MUTTAQIN', 'Jl. Sepakat', 'Tangkerang Timur', 'Tenayan Raya', 0.467130594, 101.5004527, 'TELPON_KUNO_17253___TELPON_ANTIK___TELEPHONE_JADUL___TELEPHO.jpg'),
+(1, 'Mesjid AR-RAHMAN', 'Jl. Bukit Rahayu', 'Tangkerang Timur', 'Tenayan Raya', 0.483368441, 101.5003935, 'Mesjid Ar-rahman-min.jpg'),
+(2, 'Mesjid AL-MUTTAQIN', 'Jl. Sepakat', 'Tangkerang Timur', 'Tenayan Raya', 0.467130594, 101.5004527, 'Mesjid Ar-rahman-min.jpg'),
 (3, 'Mesjid NURUL JAMAL', 'Jl. Singgalang VI / Jl. H. Andi Jamal', 'Tangkerang Timur', 'Tenayan Raya', 0.483483989, 101.5003374, 'TELPON_KUNO_17253___TELPON_ANTIK___TELEPHONE_JADUL___TELEPHO.jpg'),
 (4, 'Mesjid Ubudiyah', 'Jl. Singgalang no.40', 'Tangkerang Timur', 'Tenayan Raya', 0.316980903, 101.5001281, 'TELPON_KUNO_17253___TELPON_ANTIK___TELEPHONE_JADUL___TELEPHO.jpg'),
 (5, 'Mesjid Nurul Ihsan', 'Jl. Gunung Kidul', 'Tangkerang Timur', 'Tenayan Raya', 0.483565586, 101.4835648, 'TELPON_KUNO_17253___TELPON_ANTIK___TELEPHONE_JADUL___TELEPHO.jpg'),
@@ -103,6 +127,13 @@ INSERT INTO `tempat_ibadah` (`no`, `nama_mesjid`, `alamat`, `kelurahan`, `kecama
 --
 
 --
+-- Indexes for table `galeri`
+--
+ALTER TABLE `galeri`
+  ADD PRIMARY KEY (`id_galeri`),
+  ADD KEY `fk_galeri_ibadah` (`id_tempatibadah`);
+
+--
 -- Indexes for table `tempat_ibadah`
 --
 ALTER TABLE `tempat_ibadah`
@@ -113,10 +144,26 @@ ALTER TABLE `tempat_ibadah`
 --
 
 --
+-- AUTO_INCREMENT for table `galeri`
+--
+ALTER TABLE `galeri`
+  MODIFY `id_galeri` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT for table `tempat_ibadah`
 --
 ALTER TABLE `tempat_ibadah`
   MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `galeri`
+--
+ALTER TABLE `galeri`
+  ADD CONSTRAINT `fk_galeri_ibadah` FOREIGN KEY (`id_tempatibadah`) REFERENCES `tempat_ibadah` (`no`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

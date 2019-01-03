@@ -79,29 +79,22 @@
 
           <div class="row">
 
-            <div class="col-md-3 col-sm-6 mb-4">
-              <a href="#">
-                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-              </a>
-            </div>
-
-            <div class="col-md-3 col-sm-6 mb-4">
-              <a href="#">
-                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-              </a>
-            </div>
-
-            <div class="col-md-3 col-sm-6 mb-4">
-              <a href="#">
-                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-              </a>
-            </div>
-
-            <div class="col-md-3 col-sm-6 mb-4">
-              <a href="#">
-                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-              </a>
-            </div>
+            <?php
+            $referensi = "SELECT gambar_galeri FROM galeri WHERE id_tempatibadah = $no";
+            $result2 = $conn->query($referensi);
+            if ($result2->num_rows > 0) {
+              while ($row2 = $result2->fetch_assoc()) {
+                $gambar_galeri     = 'images/uploads/'.$row2["gambar_galeri"];
+                ?>
+                <div class="col-md-3 col-sm-6 mb-4">
+                  <a href="#">
+                    <img class="img-fluid" src="<?php echo $gambar_galeri; ?>" alt="">
+                  </a>
+                </div>
+                <?php
+              }
+            }
+            ?>
 
           </div>
           <!-- /.row -->

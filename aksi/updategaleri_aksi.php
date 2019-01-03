@@ -4,30 +4,23 @@ include('../config/config.php');
 $popup = '';
 
 $targetDir = "../images/uploads/"; //tempat penyimpanan gambar yang diUPLOAD
-$gambar = basename($_FILES["gambar"]["name"]); //ambil nama dan tipe gambar
-$targetFilePath = $targetDir . $gambar;
+$gambar_galeri = basename($_FILES["gambar_galeri"]["name"]); //ambil nama dan tipe gambar
+$targetFilePath = $targetDir . $gambar_galeri;
 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);//ambil tipe gambar dari gambar yang diupload
 
 if (isset($_POST["submit"])) {
-
-  $nama_mesjid = $_POST['nama_mesjid'];
-  $alamat = $_POST['alamat'];
-  $kelurahan = $_POST['kelurahan'];
-  $kecamatan = $_POST['kecamatan'];
-  $x = $_POST['x'];
-  $y = $_POST['y'];
-
+  $id_galeri = $_POST['id_galeri'];
+  
   //format gambar yang diterima
   $allowTypes = array('jpg','png','jpeg');
   if (in_array($fileType, $allowTypes)) {
-    if (move_uploaded_file($_FILES["gambar"]["tmp_name"], $targetFilePath)) { //max 2MB foto yang di upload
+    if (move_uploaded_file($_FILES["gambar_galeri"]["tmp_name"], $targetFilePath)) { //max 2MB foto yang di upload
       //insert Data into database
-      $insert = $conn->query("INSERT INTO `tempat_ibadah`(`nama_mesjid`, `alamat`, `kelurahan`, `kecamatan`, `x`, `y`, `gambar`)
-      VALUES ('".$nama_mesjid."', '".$alamat."', '".$kelurahan."', '".$kecamatan."', $x, $y ,'".$gambar."')");
+      $insert = $conn->query("UPDATE `galeri` SET `gambar_galeri`='$gambar_galeri' WHERE `id_galeri`=$id_galeri");
       if ($insert) {
-        $popup = "Data Berhasil Disimpan";
+        $popup = "Galeri Berhasil Diperharui";
       } else {
-        $popup = "Data Gagal Disimpan";
+        $popup = "Galeri Gagal Diperharui";
       }
       $conn->close();
     } else {
@@ -42,7 +35,7 @@ if (isset($_POST["submit"])) {
 echo "
 <script type='text/javascript'>
 alert('$popup');
-window.location.href='../data.php';
+window.location.href='../galeri.php';
 </script>
 ";
 ?>

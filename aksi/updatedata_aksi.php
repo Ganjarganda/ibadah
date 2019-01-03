@@ -23,27 +23,27 @@ if (isset($_POST["submit"])) {
     if (move_uploaded_file($_FILES["gambar"]["tmp_name"], $targetFilePath)) { //max 2MB foto yang di upload
       //insert Data into database
       $insert = $conn->query("UPDATE `tempat_ibadah` SET `nama_mesjid`='$nama_mesjid', `alamat`='$alamat'
-      , `kelurahan`='$kelurahan', `kecamatan`='$kecamatan', `x`=$x, `y`=$y, `gambar`='$gambar'
-      WHERE `no`=$no");
-      if ($insert) {
-        $popup = "Data Berhasil Diperharui";
+        , `kelurahan`='$kelurahan', `kecamatan`='$kecamatan', `x`=$x, `y`=$y, `gambar`='$gambar'
+        WHERE `no`=$no");
+        if ($insert) {
+          $popup = "Data Berhasil Diperharui";
+        } else {
+          $popup = "Data Gagal Diperharui";
+        }
+        $conn->close();
       } else {
-        $popup = "Data Gagal Diperharui";
+        $popup = "Maaf, Gambar Yang Diupload Maks.2MB.";
       }
-      $conn->close();
     } else {
-      $popup = "Maaf, Gambar Yang Diupload Maks.2MB.";
+      $popup = 'Maaf, Hanya Format File JPG, PNG, JPEG yang Diterima.';
     }
   } else {
-    $popup = 'Maaf, Hanya Format File JPG, PNG, JPEG yang Diterima.';
+    $popup = 'Harap Masukan Filenya.';
   }
-} else {
-  $popup = 'Harap Masukan Filenya.';
-}
-echo "
-<script type='text/javascript'>
+  echo "
+  <script type='text/javascript'>
   alert('$popup');
   window.location.href='../data.php';
-</script>
-";
-?>
+  </script>
+  ";
+  ?>
