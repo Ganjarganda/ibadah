@@ -43,7 +43,8 @@ if (isset($_GET['kecamatan'])) {
           'kelurahan' => $row[3],
           'kecamatan' => $row[4],
           'x' => (float)$row[5], //x
-          'y' => (float)$row[6] //y
+          'y' => (float)$row[6], //y
+          'gambar' => $row[7]
         )
       );
       array_push($geojson['features'], $feature);
@@ -84,7 +85,8 @@ if (isset($_GET['kecamatan'])) {
           'kelurahan' => $row[3],
           'kecamatan' => $row[4],
           'x' => (float)$row[5], //x
-          'y' => (float)$row[6] //y
+          'y' => (float)$row[6], //y
+          'gambar' => $row[7]
         )
       );
       array_push($geojson['features'], $feature);

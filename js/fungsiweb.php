@@ -135,10 +135,17 @@ map.on('click', function(evt) {
       var geometry = feature.getGeometry();
       var coord = geometry.getCoordinates();
 
-      var content = '<h5>' + feature.get('nama_mesjid') + '</h5>';
-      content += '<h6>' + feature.get('alamat') +', ' + feature.get('kelurahan') + ''
-      ', ' + feature.get('kecamatan') + ', Riau, Indonesia</h6>';
-
+      var content = '<table>'+
+      '<tr>'+
+      '<td rowspan=2><img class="" src="images/uploads/' + feature.get('gambar') + '" height="100" width="100" alt=""></td>'+
+      '<td><h5>' + feature.get('nama_mesjid') + '</h5></td>'+
+      '</tr>'+
+      '<tr>'+
+      '<td>' + feature.get('alamat') + ', ' + feature.get('kelurahan') + ', ' + feature.get('kecamatan') + ', Riau, Indonesia</td>'+
+      '</tr>'+
+      '</table>'+
+      '<a  class="btn btn-info float-right" href="lihatdata.php?no=' + feature.get('no') + '">Lihat</a>';
+      
       content_element.innerHTML = content;
       overlay.setPosition(coord);
 
